@@ -1,24 +1,12 @@
 <?php
-session_start(); 
+$device = $_GET['device'];
+$gclid = $_GET['gclid'];
+$id = $_GET['id'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+// Log or process parameters as needed
 
-    echo 'Username: ' . htmlspecialchars($username) . '<br>';
-    echo 'Password: ' . htmlspecialchars($password) . '<br>';
-    
-    // Validate and redirect
-    if ($username === 'user' && $password === 'pass') {
-        $_SESSION['loggedin'] = true;
-        $_SESSION['username'] = $username;
-        header('Location: https://www.amazon.com/Simple-Joys-Carters-Short-Sleeve-Bodysuit/dp/B07GY1RRZF');
-        exit;
-    } else {
-        echo 'Invalid username or password.';
-    }
-} else {
-    header("HTTP/1.1 405 Method Not Allowed");
-    echo "Method Not Allowed";
-}
+// Final destination URL
+$final_url = "https://www.jainnutsdryfruits.com/product?device=$device&gclid=$gclid&id=$id";
+header("Location: $final_url");
+exit;
 ?>
